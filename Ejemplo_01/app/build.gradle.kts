@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.iesnervion.cursoandroid_07"
-        minSdk = 29
+        minSdk = 27
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
