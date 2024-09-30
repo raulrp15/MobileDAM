@@ -13,17 +13,24 @@ import androidx.constraintlayout.widget.ConstraintSet.Constraint
 lateinit var name:EditText
 @SuppressLint("StaticFieldLeak")
 lateinit var button:Button
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(":::Vida", "He creado el create")
-        name = findViewById<EditText>(R.id.user)
+        setMainView()
+    }
 
+    private fun setMainView() {
+        setContentView(R.layout.activity_main)
+
+        // Inicializar el botón de la vista principal
+        button = findViewById<Button>(R.id.accept)
+        button.setOnClickListener {
+            setSecondView()
         }
+    }
 
-    fun cambia(v:View){
+    private fun setSecondView() {
         setContentView(R.layout.bienvenida)
     }
 
