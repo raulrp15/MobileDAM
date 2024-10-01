@@ -1,16 +1,14 @@
 package com.iesnervion.cursoandroid_07
 
 import android.Manifest
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -22,36 +20,40 @@ class MainActivity : AppCompatActivity() {
         lateinit var name:EditText
         lateinit var button:Button
     }
+    var frente:Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(":::Vida", "He creado el create")
         name = findViewById<EditText>(R.id.user)
         button = findViewById<Button>(R.id.accept)
         button.setOnClickListener {
-            setContentView(R.layout.bienvenida)
+            val cambia = Intent(this, Calculator::class.java)
+            startActivity(cambia)
         }
     }
-
-
 
     override fun onPause() {
         super.onPause()
         setContentView(R.layout.pausa)
+        frente = false
     }
 
     override fun onResume() {
         super.onResume()
-        var toast = Toast.makeText(this, "Bienvenido de nuevo, " + name.text, Toast.LENGTH_SHORT)
-        toast.show()
+        if(!frente) {
+            val toast = Toast.makeText(this, "Bienvenido de nuevo, " + name.text, Toast.LENGTH_SHORT)
+            toast.show()
+            frente = true
+
+        }
     }
 
     override fun onStop() {
         super.onStop()
         val noti = Random.nextInt(100)
         val can = "Notificacion"
-        var builder = NotificationCompat.Builder(this, can)
+        val builder = NotificationCompat.Builder(this, can)
             .setSmallIcon(R.drawable.ic_android_black_24dp)
             .setContentTitle("textTitle")
             .setContentText("textContent")

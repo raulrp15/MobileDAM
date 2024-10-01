@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.iesnervion.cursoandroid_07"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.iesnervion.cursoandroid_07"
