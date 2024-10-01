@@ -21,6 +21,8 @@ class Calculator : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculadora)
 
+
+
         text1 = findViewById(R.id.pmrNum)
         text2 = findViewById(R.id.sdoNum)
         btnSumar = findViewById(R.id.suma)
@@ -33,18 +35,24 @@ class Calculator : AppCompatActivity() {
         var n2 = 0
 
         btnSumar.setOnClickListener{
-            n1 = Integer.parseInt(text1.text.toString())
-            n2 = Integer.parseInt(text2.text.toString())
+            if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
+                n1 = Integer.parseInt(text1.text.toString())
+                n2 = Integer.parseInt(text2.text.toString())
+            }
             resultado.text = suma(n1, n2).toString()
         }
         btnRestar.setOnClickListener{
-            n1 = Integer.parseInt(text1.text.toString())
-            n2 = Integer.parseInt(text2.text.toString())
+            if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
+                n1 = Integer.parseInt(text1.text.toString())
+                n2 = Integer.parseInt(text2.text.toString())
+            }
             resultado.text = resta(n1, n2).toString()
         }
         btnDiv.setOnClickListener{
-            n1 = Integer.parseInt(text1.text.toString())
-            n2 = Integer.parseInt(text2.text.toString())
+            if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
+                n1 = Integer.parseInt(text1.text.toString())
+                n2 = Integer.parseInt(text2.text.toString())
+            }
             if(n2!=0) {
                 resultado.text = dividir(n1, n2).toString()
             }else {
@@ -53,8 +61,10 @@ class Calculator : AppCompatActivity() {
             }
         }
         btnMulti.setOnClickListener{
-            n1 = Integer.parseInt(text1.text.toString())
-            n2 = Integer.parseInt(text2.text.toString())
+            if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
+                n1 = Integer.parseInt(text1.text.toString())
+                n2 = Integer.parseInt(text2.text.toString())
+            }
             resultado.text = multi(n1, n2).toString()
         }
     }
