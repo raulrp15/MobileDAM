@@ -20,42 +20,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.d(":::Vida", "He creado el create")
         name = findViewById<EditText>(R.id.user)
-
+        button = findViewById<Button>(R.id.accept)
+        button.setOnClickListener {
+            setContentView(R.layout.bienvenida)
         }
-
-    fun cambia(v:View){
-        setContentView(R.layout.bienvenida)
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(":::Vida", "He creado el start")
-    }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(":::Vida", "He creado el reinicio")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        setContentView(R.layout.activity_main)
-        Log.d(":::Vida", "He creado el resume")
-    }
 
     override fun onPause() {
         super.onPause()
         setContentView(R.layout.pausa)
-        Log.d(":::Vida", "He creado el pause")
     }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(":::Vida", "He creado el stop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(":::Vida", "He creado el destroy")
+    override fun onResume() {
+        super.onResume()
+        setContentView(R.layout.activity_main)
     }
 }
