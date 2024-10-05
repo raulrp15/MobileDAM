@@ -1,8 +1,10 @@
 package com.iesnervion.cursoandroid_07
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,7 @@ class Calculator : AppCompatActivity() {
     lateinit var btnDiv:Button
     lateinit var btnMulti:Button
     lateinit var resultado:TextView
+    lateinit var volver:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,30 +33,31 @@ class Calculator : AppCompatActivity() {
         btnDiv = findViewById(R.id.division)
         btnMulti = findViewById(R.id.multi)
         resultado = findViewById(R.id.res)
+        volver = findViewById(R.id.volver)
 
-        var n1 = 0
-        var n2 = 0
+        var n1 = 0.0
+        var n2 = 0.0
 
         btnSumar.setOnClickListener{
             if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
-                n1 = Integer.parseInt(text1.text.toString())
-                n2 = Integer.parseInt(text2.text.toString())
+                n1 = text1.text.toString().toDouble()
+                n2 = text2.text.toString().toDouble()
             }
             resultado.text = suma(n1, n2).toString()
         }
         btnRestar.setOnClickListener{
             if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
-                n1 = Integer.parseInt(text1.text.toString())
-                n2 = Integer.parseInt(text2.text.toString())
+                n1 = text1.text.toString().toDouble()
+                n2 = text2.text.toString().toDouble()
             }
             resultado.text = resta(n1, n2).toString()
         }
         btnDiv.setOnClickListener{
             if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
-                n1 = Integer.parseInt(text1.text.toString())
-                n2 = Integer.parseInt(text2.text.toString())
+                n1 = text1.text.toString().toDouble()
+                n2 = text2.text.toString().toDouble()
             }
-            if(n2!=0) {
+            if(n2!=0.0) {
                 resultado.text = dividir(n1, n2).toString()
             }else {
                 val toast = Toast.makeText(this, "No se puede dividir entre 0", Toast.LENGTH_SHORT)
@@ -62,26 +66,31 @@ class Calculator : AppCompatActivity() {
         }
         btnMulti.setOnClickListener{
             if(text1.text.toString().isNotEmpty() && text2.text.toString().isNotEmpty()) {
-                n1 = Integer.parseInt(text1.text.toString())
-                n2 = Integer.parseInt(text2.text.toString())
+                n1 = text1.text.toString().toDouble()
+                n2 = text2.text.toString().toDouble()
             }
             resultado.text = multi(n1, n2).toString()
         }
+
+        volver.setOnClickListener{
+            val cambia = Intent(this, MainActivity::class.java)
+            startActivity(cambia)
+        }
     }
 
-    fun suma(n1:Int, n2:Int): Int{
+    fun suma(n1:Double, n2:Double): Double{
         return n1 + n2
     }
 
-    fun resta(n1:Int, n2:Int): Int{
+    fun resta(n1: Double, n2: Double): Double {
         return n1 - n2
     }
 
-    fun dividir(n1:Int, n2:Int): Int{
+    fun dividir(n1:Double, n2:Double): Double{
         return n1 / n2
     }
 
-    fun multi(n1:Int, n2:Int): Int{
+    fun multi(n1:Double, n2:Double): Double{
         return n1 * n2
     }
 
